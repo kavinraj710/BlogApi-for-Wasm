@@ -1,0 +1,87 @@
+[
+  {
+    "ContainingType": "BlogApi.Controllers.UserProfileController",
+    "Method": "GetUserProfileByEmail",
+    "RelativePath": "api/UserProfile/{email}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlogApi.Controllers.UserProfileController",
+    "Method": "UpdateUserProfile",
+    "RelativePath": "api/UserProfile/{email}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedProfile",
+        "Type": "BlogApp.Models.UserProfile",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlogApi.Controllers.UserProfileController",
+    "Method": "FollowUser",
+    "RelativePath": "api/UserProfile/Follow",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BlogApi.Controllers.UserProfileController\u002BFollowRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlogApi.Controllers.UserProfileController",
+    "Method": "RegisterUser",
+    "RelativePath": "api/UserProfile/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userProfile",
+        "Type": "BlogApp.Models.UserProfile",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlogApi.Controllers.UserProfileController",
+    "Method": "UnfollowUser",
+    "RelativePath": "api/UserProfile/Unfollow",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BlogApi.Controllers.UserProfileController\u002BFollowRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
