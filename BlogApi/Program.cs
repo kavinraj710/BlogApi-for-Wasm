@@ -1,35 +1,35 @@
-using BlogApi.Services;
-using MongoDB;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddSingleton<MongoDBService>();
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll", policy =>
-    {
-        policy.AllowAnyOrigin()  // URL of your Blazor app
-              .AllowAnyHeader()
-              .AllowAnyMethod();
-    });
-});
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+// Add Swagger generation service
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();   
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+
+// Enable Swagger middleware and Swagger UI only in Development or Production as needed
+app.UseSwagger();
+
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    // This registers the Swagger endpoint JSON for Swagger UI
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Blog API V1");
+
+    // If you want Swagger UI at the root URL (i.e. at "/"), uncomment below:
+    // c.RoutePrefix = string.Empty;
+    // By default, Swagger UI is served at "/swagger"
+});
 
 app.UseHttpsRedirection();
-app.UseCors("AllowAll");
 
 app.UseAuthorization();
 
