@@ -1,11 +1,20 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
+using BlogApi.Services;
+using MongoDB;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSingleton<MongoDBService>();
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()  // URL of your Blazor app
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
 builder.Services.AddControllers();
 
 // Add Swagger generation service
